@@ -49,7 +49,7 @@ if (currentRow == null) {
     currentRow = 1;
 }
 
-var correctWord = "hello".toLocaleUpperCase();
+var correctWord = ow.getTodayWord;
 
 
 document.addEventListener("keyup", function(e) {
