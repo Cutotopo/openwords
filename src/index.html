@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="functions.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+        $( function() {
+          $( "#tabs" ).tabs();
+        } );
+        </script>
+
+    <title>OpenWords</title>
+  </head>
+  <body id="tabs">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">OpenWords</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#playView">Play</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#settingsView">Settings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#aboutView">About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div id="playView" class="tab-view">
+        <div class="card">
+            <div class="card-body">
+              <table style="width: 100%;">
+                  <tr>
+                      <td class="letter letter-empty" id="letterBoxR1C1"></td>
+                      <td class="letter letter-empty" id="letterBoxR1C2"></td>
+                      <td class="letter letter-empty" id="letterBoxR1C3"></td>
+                      <td class="letter letter-empty" id="letterBoxR1C4"></td>
+                      <td class="letter letter-empty" id="letterBoxR1C5"></td>
+                  </tr>
+              </table>
+              <div class="collapse" id="row2Collapse">
+              <table style="width: 100%;">
+                <tr>
+                  <td class="letter letter-empty" id="letterBoxR2C1"></td>
+                  <td class="letter letter-empty" id="letterBoxR2C2"></td>
+                  <td class="letter letter-empty" id="letterBoxR2C3"></td>
+                  <td class="letter letter-empty" id="letterBoxR2C4"></td>
+                  <td class="letter letter-empty" id="letterBoxR2C5"></td>
+                </tr>
+              </table>
+              </div>
+              <div class="collapse" id="row3Collapse">
+                <table style="width: 100%;">
+                  <tr>
+                    <td class="letter letter-empty" id="letterBoxR3C1"></td>
+                    <td class="letter letter-empty" id="letterBoxR3C2"></td>
+                    <td class="letter letter-empty" id="letterBoxR3C3"></td>
+                    <td class="letter letter-empty" id="letterBoxR3C4"></td>
+                    <td class="letter letter-empty" id="letterBoxR3C5"></td>
+                  </tr>
+                </table>
+                </div>
+                <div class="collapse" id="row4Collapse">
+                  <table style="width: 100%;">
+                    <tr>
+                      <td class="letter letter-empty" id="letterBoxR4C1"></td>
+                      <td class="letter letter-empty" id="letterBoxR4C2"></td>
+                      <td class="letter letter-empty" id="letterBoxR4C3"></td>
+                      <td class="letter letter-empty" id="letterBoxR4C4"></td>
+                      <td class="letter letter-empty" id="letterBoxR4C5"></td>
+                    </tr>
+                  </table>
+                  </div>
+                  <div class="collapse" id="row5Collapse">
+                    <table style="width: 100%;">
+                      <tr>
+                        <td class="letter letter-empty" id="letterBoxR5C1"></td>
+                        <td class="letter letter-empty" id="letterBoxR5C2"></td>
+                        <td class="letter letter-empty" id="letterBoxR5C3"></td>
+                        <td class="letter letter-empty" id="letterBoxR5C4"></td>
+                        <td class="letter letter-empty" id="letterBoxR5C5"></td>
+                      </tr>
+                    </table>
+                    </div>
+                    <div class="collapse" id="row6Collapse">
+                      <table style="width: 100%;">
+                        <tr>
+                          <td class="letter letter-empty" id="letterBoxR6C1"></td>
+                          <td class="letter letter-empty" id="letterBoxR6C2"></td>
+                          <td class="letter letter-empty" id="letterBoxR6C3"></td>
+                          <td class="letter letter-empty" id="letterBoxR6C4"></td>
+                          <td class="letter letter-empty" id="letterBoxR6C5"></td>
+                        </tr>
+                      </table>
+                      </div>
+            </div>
+          </div>
+        </div>
+      <div id="settingsView" class="tab-view">
+        <div class="card">
+          <div class="card-body">
+            coming soon&trade;
+          </div>
+        </div>
+      </div>
+      <div id="aboutView" class="tab-view">
+        <h3>OpenWords</h3>
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <button onclick="(new OpenWordsAPI).launchGitPage()" type="button" class="btn btn-outline-dark"><svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+        </svg> GitHub</button>
+          <button onclick="(new OpenWordsAPI).launchGitIssues()" type="button" class="btn btn-outline-dark"><svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z" />
+        </svg> Issues</button>
+        </div>
+        <p>MIT License</p>
+      </div>
+<div class="modal fade" id="victoryModal" tabindex="-1" aria-labelledby="victoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="victoryModalLabel">You won!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        You guessed the word <span class="modalCorrectWord">XXXXX</span> on your <span class="attemptsnumber">Nth</span> attempt!
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Share
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#" onclick="(new OpenWordsAPI).copyResultToClipboard()">Copy to clipboard</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

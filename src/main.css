@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto:wght@300&display=swap');
+
+.tab-view {
+    padding-top: 10px !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+.tab-view .card {
+    max-width: 900px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.letter {
+    border: 1px solid black;
+    height: 100px;
+    padding: 10px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 200%;
+    width: 20% !important;
+}
+
+.letter-correct {
+    background-color: forestgreen;
+    color: white;
+}
+
+.letter-wrongpos {
+    background-color: yellow;
+    color: black;
+}
+
+nav .ui-state-active a {
+    color: #222323 !important;
+    font-weight: bold !important;
+}
+
+nav .ui-tabs-tab:hover a {
+    font-weight: bold !important;
+}
