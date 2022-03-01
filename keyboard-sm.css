@@ -1,0 +1,8 @@
+.keybcard {
+    width: fit-content;
+}
+
+.keybtable tr td button {
+    width: 8.0vw;
+    padding: 1vw;
+}

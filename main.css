@@ -39,3 +39,14 @@ nav .ui-state-active a {
 nav .ui-tabs-tab:hover a {
     font-weight: bold !important;
 }
+
+.rootTable, .rootTable > tr, .rootTable > tr > td {
+    width: 100% !important;
+}
+
+html, body, #playView, .rootTable { height: 100%; }
+.rootTable { height: 90%; }
+
+.gametr { height: 70%; }
+.keybtr { height: 30%; }
+body { overflow: hidden; }

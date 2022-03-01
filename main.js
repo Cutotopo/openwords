@@ -37,6 +37,17 @@ window.onload = () => {
         $("#row" + i + "Collapse").collapse("show");
         i++
     }
+
+
+$(".keybBtn").click(function() {
+    addLetter($(this).html());
+})
+$(".backspaceBtn").click(function() {
+    delLetter($(this).html());
+})
+$(".enterBtn").click(function() {
+    sendEnter($(this).html());
+})
 }
 
 
@@ -52,45 +63,43 @@ if (currentRow == null) {
 var correctWord = ow.getTodayWord;
 
 
-document.addEventListener("keyup", function(e) {
-    if ((e.keyCode >= 65) && (e.keyCode <= 90)) {
-        window.localStorage.setItem("lastKnownWord", correctWord);
+function addLetter(letter) {
+    window.localStorage.setItem("lastKnownWord", correctWord);
         if (boardcompleted == false) {
 
             for (var i = 0; i < 5; i++) {
                 if ($("#letterBoxR" + currentRow + "C" + (i + 1)).html() == "") {
-                    $("#letterBoxR" + currentRow + "C" + (i + 1)).html(e.key.toLocaleUpperCase());
-                    window.localStorage.setItem("letterBoxR" + currentRow + "C" + (i + 1), e.key.toLocaleUpperCase());
+                    $("#letterBoxR" + currentRow + "C" + (i + 1)).html(letter);
+                    window.localStorage.setItem("letterBoxR" + currentRow + "C" + (i + 1), letter);
                     break;
                 }
             }
+        }
+}
+
+function delLetter() {
+    var rowLastLetter = $("#letterBoxR" + currentRow + "C5").html();
+    for (var i = 0; i < 5; i++) {
+        if ($("#letterBoxR" + currentRow + "C" + (i + 1)).html() == "") {
+            rowLastLetter = i
+            break;
+        }
+    }
+
+    if (rowLastLetter == 0) {
+        $("#letterBoxR" + currentRow + "C1").html("");
+        window.localStorage.setItem("letterBoxR" + currentRow + "C1", "");
+    } else if (rowLastLetter >= 1 && rowLastLetter <= 4) {
+        $("#letterBoxR" + currentRow + "C" + rowLastLetter).html("");
+        window.localStorage.setItem("letterBoxR" + currentRow + "C" + rowLastLetter, "");
+    } else {
+        $("#letterBoxR" + currentRow + "C5").html("");
+        window.localStorage.setItem("letterBoxR" + currentRow + "C5", "");
     }
 }
 
-    if (e.keyCode == 8) {
-        var rowLastLetter = $("#letterBoxR" + currentRow + "C5").html();
-        for (var i = 0; i < 5; i++) {
-            if ($("#letterBoxR" + currentRow + "C" + (i + 1)).html() == "") {
-                rowLastLetter = i
-                break;
-            }
-        }
-
-        if (rowLastLetter == 0) {
-            $("#letterBoxR" + currentRow + "C1").html("");
-            window.localStorage.setItem("letterBoxR" + currentRow + "C1", "");
-        } else if (rowLastLetter >= 1 && rowLastLetter <= 4) {
-            $("#letterBoxR" + currentRow + "C" + rowLastLetter).html("");
-            window.localStorage.setItem("letterBoxR" + currentRow + "C" + rowLastLetter, "");
-        } else {
-            $("#letterBoxR" + currentRow + "C5").html("");
-            window.localStorage.setItem("letterBoxR" + currentRow + "C5", "");
-        }
-
-    }
-
-    if (e.keyCode == 13) {
-        var currentWord = $("#letterBoxR" + currentRow + "C1").html() + $("#letterBoxR" + currentRow + "C2").html() + $("#letterBoxR" + currentRow + "C3").html() + $("#letterBoxR" + currentRow + "C4").html() + $("#letterBoxR" + currentRow + "C5").html()
+function sendEnter() {
+    var currentWord = $("#letterBoxR" + currentRow + "C1").html() + $("#letterBoxR" + currentRow + "C2").html() + $("#letterBoxR" + currentRow + "C3").html() + $("#letterBoxR" + currentRow + "C4").html() + $("#letterBoxR" + currentRow + "C5").html()
         if (currentWord.length == 5 && boardcompleted == false) {
             if (currentRow == 6) {
                 boardcompleted = true;
@@ -137,5 +146,19 @@ document.addEventListener("keyup", function(e) {
             }
 
         }
+}
+
+
+document.addEventListener("keyup", function(e) {
+    if ((e.keyCode >= 65) && (e.keyCode <= 90)) {
+        addLetter(e.key.toLocaleUpperCase());
+    }
+
+    if (e.keyCode == 8) {
+        delLetter();
+    }
+
+    if (e.keyCode == 13) {
+        sendEnter();
     }
 })
