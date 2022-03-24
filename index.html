@@ -172,11 +172,62 @@
         </tr>
       </table>
     </div>
-      <div id="settingsView" class="tab-view">
+      <div id="settingsView" class="tab-view" style="text-align: left !important;">
         <div class="card">
           <div class="card-body">
-            coming soon&trade;<br><br>
-            <button onclick="window.localStorage.clear()" type="button" class="btn btn-outline-dark">[debug] clear localstorage</button>
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Appearance
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" id="settingsDarkTheme" disabled>
+                      <label class="form-check-label" for="settingsDarkTheme">Dark theme (coming soon&trade;)</label>
+                    </div>                    
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" onclick="toggleCustomCSSTheme()" type="checkbox" role="switch" id="settingsCustomCSS">
+                      <label class="form-check-label" for="settingsCustomCSS">Use a custom CSS theme</label>
+                    </div>
+                    <div class="collapse" id="settingsCustomCSSCollapse">
+                      <label for="basic-url" class="form-label">Custom CSS file URL</label>
+                      <div class="input-group mb-3">
+                        <input type="url" class="form-control" id="customCssInput">
+                        <button class="btn btn-outline-secondary" type="button" id="customCssInputApplyBtn" onclick="applyCustomCSS()">Apply</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Gameplay
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Coming soon&trade;</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Clear game data
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>WARNING!</strong> This will clear all of your game settings and data. This action <b><u>cannot</u></b> be undone.<br>
+                    <button onclick="window.localStorage.clear()" type="button" class="btn btn-outline-dark mt-3">Clear local storage</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

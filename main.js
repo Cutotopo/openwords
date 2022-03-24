@@ -1,10 +1,21 @@
 var ow = new OpenWordsAPI();
-
+var customcss = false;
 
 
 document.addEventListener("DOMContentLoaded", function() {
     if (window.localStorage.getItem("lastKnownWord") != correctWord) {
         ow.clearBoard();
+    }
+
+    if (window.localStorage.getItem("customCSS").startsWith("https://")) {
+        $("#customCssInput").val(window.localStorage.getItem("customCSS"));
+        var gscss = $("<link />",{
+            rel: "stylesheet",
+            type: "text/css",
+            href: window.localStorage.getItem("customCSS")
+        })
+        $("head").append(gscss);
+        customcss = true;
     }
     
     var initCurrentRow = 0;
@@ -36,6 +47,11 @@ window.onload = () => {
     while (i <= initCurrentRow){
         $("#row" + i + "Collapse").collapse("show");
         i++
+    }
+
+    if (customcss == true) {
+        $("#settingsCustomCSSCollapse").collapse("show");
+        $("#settingsCustomCSS")[0].checked = true;
     }
 
 

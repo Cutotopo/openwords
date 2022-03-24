@@ -31,3 +31,19 @@ class OpenWordsAPI {
       window.open("https://github.com/Cutotopo/OpenWords/issues", "_blank");
     }
   }
+
+function toggleCustomCSSTheme() {
+    if ($("#settingsCustomCSS")[0].checked == true) {
+        $("#settingsCustomCSSCollapse").collapse("show");
+        window.localStorage.setItem("customCSS", $("#customCssInput").val(""));
+    } else {
+      $("#settingsCustomCSSCollapse").collapse("hide");
+      $("#customCssInput").val("");
+      window.localStorage.setItem("customCSS", "");
+      }
+}
+
+function applyCustomCSS() {
+  window.localStorage.setItem("customCSS", $("#customCssInput").val());
+  window.location.reload();
+}
