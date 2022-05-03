@@ -60,3 +60,10 @@ function applyCustomCSS() {
   window.localStorage.setItem("customCSS", $("#customCssInput").val());
   window.location.reload();
 }
+
+function gameSettingsClearChangeCollapse(s) {
+  $("#clearStartCollapse").collapse("hide");
+  $("#clearQuestionCollapse").collapse("hide");
+  $("#clearReloadCollapse").collapse("hide");
+  $("#clear" + s + "Collapse").collapse("show");
+}
