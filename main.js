@@ -1,22 +1,31 @@
 var ow = new OpenWordsAPI();
 var customcss = false;
+var boardcompleted = true;
 
 
 document.addEventListener("DOMContentLoaded", function() {
     if (window.localStorage.getItem("lastKnownWord") != correctWord) {
         ow.clearBoard();
     }
-
-    if (window.localStorage.getItem("customCSS").startsWith("https://")) {
-        $("#customCssInput").val(window.localStorage.getItem("customCSS"));
-        var gscss = $("<link />",{
-            rel: "stylesheet",
-            type: "text/css",
-            href: window.localStorage.getItem("customCSS")
-        })
-        $("head").append(gscss);
-        customcss = true;
+    try {
+        if (window.localStorage.getItem("customCSS").startsWith("https://")) {
+            $("#customCssInput").val(window.localStorage.getItem("customCSS"));
+            var gscss = $("<link />",{
+                rel: "stylesheet",
+                type: "text/css",
+                href: window.localStorage.getItem("customCSS")
+            })
+            $("head").append(gscss);
+            ow.log("Applied custom CSS.","CSS")
+            customcss = true;
+        } else {
+            ow.log("No custom CSS applied.","CSS")
+        }
+    } catch (e) {
+        ow.log("No custom CSS applied.","CSS")
     }
+
+    ow.loadRepoInfo();
     
     var initCurrentRow = 0;
     for (i = 0; i < 6; i++) {
@@ -67,12 +76,19 @@ $(".enterBtn").click(function() {
 }
 
 
-var boardcompleted = window.localStorage.getItem("boardcompleted");
-if (boardcompleted == null) {
+var boardcompletedl = window.localStorage.getItem("boardcompleted");
+if (boardcompletedl == "true") {
+    boardcompleted = true;
+} else if (boardcompletedl == "false") {
+    boardcompleted = false;
+} else {
     boardcompleted = false;
 }
 var currentRow = window.localStorage.getItem("currentRow");
 if (currentRow == null) {
+    currentRow = 1;
+}
+if (currentRow == 0) {
     currentRow = 1;
 }
 
@@ -81,11 +97,10 @@ var correctWord = ow.getTodayWord;
 
 function addLetter(letter) {
     window.localStorage.setItem("lastKnownWord", correctWord);
-        if (boardcompleted == false) {
-
-            for (var i = 0; i < 5; i++) {
-                if ($("#letterBoxR" + currentRow + "C" + (i + 1)).html() == "") {
-                    $("#letterBoxR" + currentRow + "C" + (i + 1)).html(letter);
+    if (boardcompleted == false) {
+        for (var i = 0; i < 5; i++) {
+            if ($("#letterBoxR" + currentRow + "C" + (i + 1)).html() == "") {
+                $("#letterBoxR" + currentRow + "C" + (i + 1)).html(letter);
                     window.localStorage.setItem("letterBoxR" + currentRow + "C" + (i + 1), letter);
                     break;
                 }
@@ -94,23 +109,25 @@ function addLetter(letter) {
 }
 
 function delLetter() {
-    var rowLastLetter = $("#letterBoxR" + currentRow + "C5").html();
-    for (var i = 0; i < 5; i++) {
-        if ($("#letterBoxR" + currentRow + "C" + (i + 1)).html() == "") {
-            rowLastLetter = i
-            break;
+    if (boardcompleted == false) {
+        var rowLastLetter = $("#letterBoxR" + currentRow + "C5").html();
+        for (var i = 0; i < 5; i++) {
+            if ($("#letterBoxR" + currentRow + "C" + (i + 1)).html() == "") {
+                rowLastLetter = i
+                break;
+            }
         }
-    }
-
-    if (rowLastLetter == 0) {
-        $("#letterBoxR" + currentRow + "C1").html("");
-        window.localStorage.setItem("letterBoxR" + currentRow + "C1", "");
-    } else if (rowLastLetter >= 1 && rowLastLetter <= 4) {
-        $("#letterBoxR" + currentRow + "C" + rowLastLetter).html("");
-        window.localStorage.setItem("letterBoxR" + currentRow + "C" + rowLastLetter, "");
-    } else {
-        $("#letterBoxR" + currentRow + "C5").html("");
-        window.localStorage.setItem("letterBoxR" + currentRow + "C5", "");
+    
+        if (rowLastLetter == 0) {
+            $("#letterBoxR" + currentRow + "C1").html("");
+            window.localStorage.setItem("letterBoxR" + currentRow + "C1", "");
+        } else if (rowLastLetter >= 1 && rowLastLetter <= 4) {
+            $("#letterBoxR" + currentRow + "C" + rowLastLetter).html("");
+            window.localStorage.setItem("letterBoxR" + currentRow + "C" + rowLastLetter, "");
+        } else {
+            $("#letterBoxR" + currentRow + "C5").html("");
+            window.localStorage.setItem("letterBoxR" + currentRow + "C5", "");
+        }
     }
 }
 
@@ -138,7 +155,7 @@ function sendEnter() {
                 }
             }
 
-            console.log(currentWord);
+            ow.log("Input: " + currentWord,"GAME")
             if (currentWord == correctWord) {
                 window.localStorage.setItem("lastCompletedGame", new Date());
                 boardcompleted = true;
