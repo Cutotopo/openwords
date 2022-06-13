@@ -9,7 +9,7 @@ OpenWords is an open source Wordle-like game, which was made because i didn't kn
 The word to guess can be changed at the top of functions.js, and can be retrieved using ```(new OpenWordsAPI).getTodayWord();```
 
 ## Playing the game
-You can play this game on: [cutotopo.github.io/openwords](https://cutotopo.github.io/openwords) - GitHub Pages
+You can play this game on: [cutotopo.github.io/openwords](https://cutotopo.github.io/openwords) (GitHub Pages)
 
 ## Credits
 This project uses Bootstrap, JQuery, JQuery UI and icons from MaterialDesignIcons.
